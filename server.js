@@ -1,10 +1,29 @@
-const mongoose = require('mongoose')
+const dotenv = require("dotenv");
+dotenv.config();
+const express = require('express');
+const morgan = require('morgan');
+const mongoose =  require('mongoose');
 
-const planetSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  image: String,
-})
+const app = express();
+const PORT = 3000;
+// DB CONNECTION
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connection.on('connected', () => {
+    console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+});
+// MODELS
+const Planet = require('./models/planet');// you don't have to write the file's extension (.js), when using the require function
 
-const Planet = mongoose.model('Planet', planetSchema)
-module.exports = Planet
+// MIDDLEWARE
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: false}));// a middleware that converts model into a javascript object
+
+// ROUTES
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
+
