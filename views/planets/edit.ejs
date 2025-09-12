@@ -4,23 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit <%= planet.name %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-    <a href="/planets/<%= planet._id %>"> Back to <%= planet.name %></a>
+    <a class="planets-index-link" href="/planets/<%= planet._id %>"><div class="index-link-text">Back to <%= planet.name %></div></a>
     <h1>Edit <%= planet.name %>!</h1>
     <form action="/planets/<%= planet._id %>?_method=PUT" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="<%= planet.name %>">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="<%= planet.name %>">
+        </div>
 
-        <label for="description">Description:</label>
-        <textarea name="description" id="description" cols="30" rows="3" ><%= planet.description %></textarea>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" cols="30" rows="3" ><%= planet.description %></textarea>
+        </div>
 
-        <label for="number-of-moons">Number of Moons:</label>
-        <input type="number" name="numberOfMoons" id="number-of-moons" value="<%= planet.numberOfMoons %>">
-
-        <label for="has-rings">Has Rings?</label>
-        <input type="checkbox" name="hasRings" id="has-rings" <% if(planet.hasRings) { %> checked <% } %>>
-
+        <div class="form-group">
+            <label for="number-of-moons">Number of Moons:</label>
+            <input type="number" name="numberOfMoons" id="number-of-moons" value="<%= planet.numberOfMoons %>">
+        </div>
+        
+        <div class="checkbox-div">
+            <label for="has-rings">Has Rings?</label>
+            <input type="checkbox" name="hasRings" id="has-rings" <% if(planet.hasRings) { %> checked <% } %>>
+        </div>
+        
         <button type="submit">Update <%= planet.name %></button>
     </form>
 </body>

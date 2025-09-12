@@ -4,21 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= planet.name %> Details</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-    <a href="/planets"> Back to Planets</a>
-    <h1><%= planet.name %></h1>
-    <p><%= planet.description %></p>
-    <p>It has <%= planet.numberOfMoons %> moons!</p>
-    <% if(planet.hasRings) { %>
-        <p>This planets has rings!</p>
-    <% } else { %>
-        <p>This planet has <span id="red-text">no</span> rings!</p>
-    <% } %>
+    <a class="planets-index-link" href="/planets">
+        <div class="index-link-text">Back to Planets</div>
+    </a>
 
-    <form action="/planets/<%= planet._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete <%= planet.name %></button>
-    </form>
-    <a href="/planets/<%= planet._id %>/edit">Edit <%= planet.name %></a>
+    <div class="planet-details">
+        <h1><%= planet.name %></h1>
+        <p class="planet-description"><%= planet.description %></p>
+        <p>It has <span class="planet-moons"><%= planet.numberOfMoons %></span> moons!</p>
+            <% if(planet.hasRings) { %>
+                <p class="planet-rings">This planets has rings!</p>
+            <% } else { %>
+                <p class="planet-rings">This planet has <span class="no-rings">no</span> rings!</p>
+            <% } %>
+    </div>
+
+    <div class="planet-actions">
+        <form class="delete-form" action="/planets/<%= planet._id %>?_method=DELETE" method="POST">
+            <button class="delete-button" type="submit">Delete <%= planet.name %></button>
+        </form>
+        <a class="edit-link" href="/planets/<%= planet._id %>/edit">
+            <div class="edit-text">Edit <%= planet.name %></div>
+        </a>
+    </div>
 </body>
 </html>

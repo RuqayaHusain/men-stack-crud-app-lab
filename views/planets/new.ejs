@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a New Planet</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-    <a href="/planets"> Back to Planets</a>
+    <a class="planets-index-link" href="/planets"><div class="index-link-text">Back to Planets</div></a>
     <h1>Add a New Planet!</h1>
     <form action="/planets" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+        </div>
 
-        <label for="description">Description:</label>
-        <textarea name="description" id="description" cols="30" rows="3"></textarea>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" cols="30" rows="3"></textarea>
+        </div>
 
-        <label for="number-of-moons">Number of Moons:</label>
-        <input type="number" name="numberOfMoons" id="number-of-moons">
+        <div class="form-group">
+            <label for="number-of-moons">Number of Moons:</label>
+            <input type="number" name="numberOfMoons" id="number-of-moons">
+        </div>
 
-        <label for="has-rings">Has Rings?</label>
-        <input type="checkbox" name="hasRings" id="has-rings">
+        <div class="checkbox-div">
+            <label for="has-rings">Has Rings?</label>
+            <input type="checkbox" name="hasRings" id="has-rings">
+        </div>
 
         <button type="submit">Add Planet</button>
     </form>

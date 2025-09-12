@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Planets</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <h1>All Planets</h1>
-    <a href="/planets/new">Add Planet</a>
+    <div class="index-header-div">
+        <h1>All Planets</h1>
+        <a class="add-planet" href="/planets/new">Add Planet</a>
+    </div>
 
     <ul>
         <% planets.forEach((planet) => { %>
             <li>
-                <a href="/planets/<%= planet._id %>"> <%= planet.name %></a>
+                <a class="planet-cards" href="/planets/<%= planet._id %>"> <%= planet.name %></a>
             </li>
         <% }); %>
     </ul>
