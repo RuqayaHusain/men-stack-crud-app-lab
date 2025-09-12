@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a New Planet</title>
+</head>
+<body>
+    <a href="/planets"> Back to Planets</a>
+    <h1>Add a New Planet!</h1>
+    <form action="/planets" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" cols="30" rows="3"></textarea>
+
+        <label for="number-of-moons">Number of Moons:</label>
+        <input type="number" name="numberOfMoons" id="number-of-moons">
+
+        <label for="has-rings">Has Rings?</label>
+        <input type="checkbox" name="hasRings" id="has-rings">
+
+        <button type="submit">Add Planet</button>
+    </form>
+</body>
+</html>

@@ -23,6 +23,27 @@ app.get('/', (req, res) => {
     res.render('index.ejs');
 });
 
+app.get('/planets', async (req, res) => { // displays a list of all planets
+    const planets = await Planet.find({});
+    res.render('planets/index.ejs', {
+        planets, //passed planet objects as a local object to be used inside the views/planets/index.ejs file
+    });
+});
+
+app.get('/planets/new', (req, res) => {
+    res.render('planets/new.ejs');
+});
+
+app.post('/planets', async (req, res) => {
+  if(req.body.hasRings === 'on') {
+    req.body.hasRings = true;
+  } else {
+    req.body.hasRings = false;
+  }
+  await Planet.create(req.body); // creates a record
+  res.redirect('/planets');
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
