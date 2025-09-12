@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= planet.name %> Details</title>
+</head>
+<body>
+    <a href="/planets"> Back to Planets</a>
+    <h1><%= planet.name %></h1>
+    <p><%= planet.description %></p>
+    <p>It has <%= planet.numberOfMoons %> moons!</p>
+    <% if(planet.hasRings) { %>
+        <p>This planets has rings!</p>
+    <% } else { %>
+        <p>This planet has <span id="red-text">no</span> rings!</p>
+    <% } %>
+
+    <form action="/planets/<%= planet._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= planet.name %></button>
+    </form>
+    <a href="/planets/<%= planet._id %>/edit">Edit <%= planet.name %></a>
+</body>
+</html>
